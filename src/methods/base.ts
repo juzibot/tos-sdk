@@ -28,7 +28,6 @@ import {
 import { makeAxiosInst } from '../axios';
 import type { CRCCls } from '../universal/crc';
 import * as log from '../log';
-import mpAdapter from 'axios-miniprogram-adapter';
 import uniappAdapter from 'axios-adapter-uniapp';
 
 export interface TOSConstructorOptions {
@@ -582,11 +581,6 @@ function getAdapter(): AxiosAdapter | undefined {
   }
 
   switch (true) {
-    case typeof wx !== 'undefined':
-    case typeof swan !== 'undefined':
-    case typeof dd !== 'undefined':
-    case typeof my !== 'undefined':
-      return mpAdapter as AxiosAdapter;
     case typeof uni !== 'undefined':
       return uniappAdapter as AxiosAdapter;
     default:
